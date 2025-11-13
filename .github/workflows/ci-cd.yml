@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read # To checkout code
+  pages: write   # To deploy to GitHub Pages
+  id-token: write # To use OIDC for authentication
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout repository
+        # Action that fetches your code from the repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Node.js 20.x
+        # Action that installs Node.js, the runtime for your React project
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Use npm for dependency caching
+
+      - name: 3. Install dependencies
+        # Runs the command to download all libraries defined in package.json
+        run: npm install
+
+      - name: 4. Run tests
+        # Executes your project's test suite (e.g., Jest or Vitest).
+        # Deployment stops here if any test fails!
+        run: npm test
+
+      - name: 5. Build project
+        # Compiles the source code into static HTML/CSS/JS files for production
+        run: npm run build
+
+      # --- Deployment to GitHub Pages ---
+      - name: 6. Setup GitHub Pages
+        # Configures the GitHub environment for static site deployment
+        uses: actions/configure-pages@v5
+
+      - name: 7. Upload artifact for deployment
+        # Packages the 'dist' folder (your built website) for publishing
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: 8. Deploy to GitHub Pages
+        # The final step: publishes the artifact to your live GitHub Pages URL
+        id: deployment
+        uses: actions/deploy-pages@v4
