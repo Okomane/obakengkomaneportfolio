@@ -56,20 +56,13 @@ jobs:
         # correctly runs your Vite/other bundler command to create the './dist' folder.
         run: npm run build
 
-      - name: 6b. Check if dist directory exists (DEBUG CHECK)
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "Build directory 'dist' does not exist. Check 'npm run build' output."
-            exit 1
-          fi
-
       - name: 7. Setup Pages
         uses: actions/configure-pages@v5
 
       - name: 8. Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' 
+          path: './build'
           # CRITICAL CHECK: Ensure this path is correct. 
           # Some frameworks use 'build' or 'out' instead of 'dist'.
 
