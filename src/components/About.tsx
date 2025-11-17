@@ -30,7 +30,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-4 text-slate-300">
             <p>
-              I’m a DevOps Engineer with over seven years of experience in the IT industry,
+              I am a DevOps Engineer with over seven years of experience in the IT industry,
               supported by a strong foundation as a software developer. 
               My passion lies in automating processes, optimizing infrastructure, 
               and implementing best-practice solutions that enhance software delivery.

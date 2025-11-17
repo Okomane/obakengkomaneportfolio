@@ -7,19 +7,19 @@ export function Projects() {
     {
       title: 'Multi-Cloud Infrastructure Deployment',
       description: 'Designed and implemented a multi-cloud infrastructure using Terraform, enabling seamless deployment across AWS, Azure, and GCP with automated failover capabilities.',
-      technologies: ['Terraform', 'AWS', 'Azure', 'GCP', 'Kubernetes'],
+      technologies: ['Terraform', 'AWS', 'Kubernetes'],
       impact: 'Reduced deployment time by 60% and improved system reliability',
     },
     {
       title: 'CI/CD Pipeline Automation',
       description: 'Built comprehensive CI/CD pipelines using Jenkins and GitHub Actions, implementing automated testing, security scanning, and deployment strategies.',
-      technologies: ['Jenkins', 'GitHub Actions', 'Docker', 'SonarQube', 'Trivy'],
+      technologies: ['Jenkins', 'GitHub Actions', 'Docker'],
       impact: 'Accelerated release cycles from monthly to daily deployments',
     },
     {
       title: 'Kubernetes Cluster Management',
       description: 'Set up and managed production-grade Kubernetes clusters with automated scaling, monitoring, and disaster recovery capabilities.',
-      technologies: ['Kubernetes', 'Helm', 'Prometheus', 'Grafana', 'ArgoCD'],
+      technologies: ['Kubernetes', 'Helm', 'Prometheus', 'Grafana'],
       impact: 'Achieved 99.9% uptime and reduced infrastructure costs by 40%',
     },
     {
