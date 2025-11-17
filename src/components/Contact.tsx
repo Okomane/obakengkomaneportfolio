@@ -124,7 +124,7 @@ export function Contact() {
                   <Mail className="h-5 w-5 text-blue-400 mt-1" />
                   <div>
                     <h3 className="text-white mb-1">Email</h3>
-                    <p className="text-slate-400 text-sm">obakeng@example.com</p>
+                    <p className="text-slate-400 text-sm">obakengkomane@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
@@ -136,7 +136,7 @@ export function Contact() {
                   <Phone className="h-5 w-5 text-blue-400 mt-1" />
                   <div>
                     <h3 className="text-white mb-1">Phone</h3>
-                    <p className="text-slate-400 text-sm">+1 (555) 123-4567</p>
+                    <p className="text-slate-400 text-sm">+27 64 501 6690</p>
                   </div>
                 </div>
               </CardContent>
