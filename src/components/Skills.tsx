@@ -4,7 +4,7 @@ export function Skills() {
   const skillCategories = [
     {
       category: 'Cloud Platforms',
-      skills: ['AWS', 'Azure', 'Google Cloud', 'DigitalOcean'],
+      skills: ['AWS'],
     },
     {
       category: 'Containerization & Orchestration',
@@ -12,15 +12,15 @@ export function Skills() {
     },
     {
       category: 'CI/CD Tools',
-      skills: ['Jenkins', 'GitLab CI', 'GitHub Actions', 'CircleCI', 'ArgoCD'],
+      skills: ['Jenkins', 'GitLab CI', 'GitHub Actions'],
     },
     {
       category: 'Infrastructure as Code',
-      skills: ['Terraform', 'Ansible', 'CloudFormation', 'Pulumi'],
+      skills: ['Terraform', 'Ansible', 'CloudFormation'],
     },
     {
       category: 'Monitoring & Logging',
-      skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Datadog', 'New Relic'],
+      skills: ['Prometheus', 'Grafana', 'ELK Stack'],
     },
     {
       category: 'Version Control & Collaboration',
@@ -28,7 +28,7 @@ export function Skills() {
     },
     {
       category: 'Scripting & Programming',
-      skills: ['Python', 'Bash', 'PowerShell', 'Go'],
+      skills: ['Python', 'Bash'],
     },
     {
       category: 'Operating Systems',
