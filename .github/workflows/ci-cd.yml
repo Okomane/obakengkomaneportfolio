@@ -33,17 +33,35 @@ jobs:
           node-version: '20'
 
       - name: 3. Install dependencies
-        run: npm install
+        # Use 'npm ci' for clean, consistent installs in CI/CD environments.
+        run: npm ci
 
-      - name: 4. Run tests
+      # 4. FIX: Ensure tests don't exit with code 0 if they fail, 
+      # which would cause the build step to run but potentially with a broken state.
+      # If your 'npm test' passes, this step is fine. If it fails and 
+      # your workflow proceeds, it's a configuration issue in your test script.
+      - name: 4. Run tests (Must pass or fail fast)
         run: npm test
+        # NOTE: If your test framework (like Jest) is configured to ignore failures, 
+        # this step might be succeeding but leading to a broken build.
 
-      - name: 5. Ensure build tools are executable
-        # This gives execute permission to the vite binary installed in node_modules
-        run: chmod +x node_modules/.bin/vite
+      # 5. REMOVED: The 'npm run build' command typically handles 
+      # running binaries from node_modules/.bin automatically. 
+      # The explicit 'chmod' step is rarely necessary and can be removed for simplicity.
+      # - name: 5. Ensure build tools are executable
+      #   run: chmod +x node_modules/.bin/vite
 
-      - name: 6. Build project
+      - name: 6. Build project (CRITICAL STEP)
+        # This step is correct, assuming 'npm run build' in your package.json 
+        # correctly runs your Vite/other bundler command to create the './dist' folder.
         run: npm run build
+
+      - name: 6b. Check if dist directory exists (DEBUG CHECK)
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Build directory 'dist' does not exist. Check 'npm run build' output."
+            exit 1
+          fi
 
       - name: 7. Setup Pages
         uses: actions/configure-pages@v5
@@ -51,7 +69,9 @@ jobs:
       - name: 8. Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Assuming your Vite build output is in 'dist'
+          path: './dist' 
+          # CRITICAL CHECK: Ensure this path is correct. 
+          # Some frameworks use 'build' or 'out' instead of 'dist'.
 
       - name: 9. Deploy to GitHub Pages
         id: deployment
