@@ -1,4 +1,8 @@
+# Add this comment
+# Final attempt to ensure environment setup is recognized
+
 name: CI/CD Pipeline for Portfolio Site
+# ... (rest of the file content)
 
 on:
   push:
@@ -14,6 +18,11 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    # --- START CRITICAL FIX ---
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # --- END CRITICAL FIX ---
     steps:
       - name: 1. Checkout repository
         uses: actions/checkout@v4
@@ -29,7 +38,6 @@ jobs:
       - name: 4. Run tests
         run: npm test
 
-      # This is the new step to fix the "Permission denied" error for Vite
       - name: 5. Ensure build tools are executable
         # This gives execute permission to the vite binary installed in node_modules
         run: chmod +x node_modules/.bin/vite
