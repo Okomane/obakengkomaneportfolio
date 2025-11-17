@@ -3,8 +3,15 @@ import { Button } from './ui/button';
 
 export function Hero() {
   const scrollToContact = () => {
+    // This function handles scrolling to the section with id="contact"
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // --- REPLACE THESE PLACEHOLDERS WITH YOUR ACTUAL URLs ---
+  const GITHUB_URL = "https://github.com/Okomane";
+  const LINKEDIN_URL = "https://www.linkedin.com/in/obakeng-komane-384b7481/";
+  const MAILTO_URL = "mailto:obakengkomane@gmail.com"; // Use mailto: for email
+  // --------------------------------------------------------
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 relative">
@@ -22,6 +29,7 @@ export function Hero() {
         </div>
 
         <div className="flex gap-4 justify-center">
+          {/* Button 1: Get In Touch (Scrolls to contact section) */}
           <Button
             onClick={scrollToContact}
             size="lg"
@@ -30,24 +38,47 @@ export function Hero() {
             <Mail className="mr-2 h-5 w-5" />
             Get In Touch
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-slate-600 text-slate-300 hover:bg-slate-800"
-          >
-            <Github className="mr-2 h-5 w-5" />
-            View GitHub
-          </Button>
+
+          {/* Button 2: View GitHub (Redirects to GitHub URL) */}
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+            >
+              <Github className="mr-2 h-5 w-5" />
+              View GitHub
+            </Button>
+          </a>
         </div>
 
+        {/* Social Icons Section (Footer icons) */}
         <div className="flex gap-6 justify-center pt-4">
-          <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+          {/* GitHub Icon */}
+          <a 
+            href={GITHUB_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-slate-400 hover:text-blue-400 transition-colors"
+          >
             <Github className="h-6 w-6" />
           </a>
-          <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+          
+          {/* LinkedIn Icon */}
+          <a 
+            href={LINKEDIN_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-slate-400 hover:text-blue-400 transition-colors"
+          >
             <Linkedin className="h-6 w-6" />
           </a>
-          <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+          
+          {/* Mail Icon */}
+          <a 
+            href={MAILTO_URL} 
+            className="text-slate-400 hover:text-blue-400 transition-colors"
+          >
             <Mail className="h-6 w-6" />
           </a>
         </div>
