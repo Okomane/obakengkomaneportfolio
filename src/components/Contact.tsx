@@ -13,18 +13,43 @@ export function Contact() {
     company: '',
     message: '',
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Message sent! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', company: '', message: '' });
-  };
+  
+  // --- Replace with your actual email address ---
+  const RECIPIENT_EMAIL = "obakengkomane@gmail.com"; 
+  // ----------------------------------------------
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // 1. Construct the Subject Line
+    const subject = encodeURIComponent(`New Contact from Portfolio: ${formData.name}`);
+
+    // 2. Construct the Email Body
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Company: ${formData.company || 'N/A'}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    // 3. Create the mailto: URL
+    const mailtoLink = `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
+
+    // 4. Open the user's email client
+    window.location.href = mailtoLink;
+    
+    // Optional: Show a message indicating what happened
+    toast.success('Your default email client should open now. Please press "Send" there to complete your message!');
+
+    // 5. Clear the form after submission attempt
+    setFormData({ name: '', email: '', company: '', message: '' });
   };
 
   return (
@@ -117,6 +142,7 @@ export function Contact() {
             </Card>
           </div>
 
+          {/* ... (Contact Info Cards remain the same) ... */}
           <div className="space-y-4">
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="pt-6">
