@@ -174,7 +174,7 @@ export function Contact() {
                   <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                   <div>
                     <h3 className="text-white mb-1">Location</h3>
-                    <p className="text-slate-400 text-sm">Available for remote work</p>
+                    <p className="text-slate-400 text-sm">Available for remote work and willing to relocate</p>
                   </div>
                 </div>
               </CardContent>
